@@ -10,7 +10,7 @@ public class AnimationStates : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>(); // Get the animator component
-        IsMovingHash = Animator.StringToHash("IsMoving"); // Get the hash of the parameter "isWalking"
+        // IsMovingHash = Animator.StringToHash("IsMoving"); // Get the hash of the parameter "isWalking"
     }
 
     // Update is called once per frame
@@ -26,6 +26,7 @@ public class AnimationStates : MonoBehaviour
         if (Input.GetAxis("Vertical") == 0 && isWalking)
         {
             animator.SetBool(IsMovingHash, false); // Set the value of the parameter "isWalking" to true
+            Debug.Log("not walking");
         }
     }
 }

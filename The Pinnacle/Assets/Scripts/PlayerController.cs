@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed;
     [SerializeField] private float rotationSpeed = 100.0f; // Rotation speed
     [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
+    private GameBehaviour gameBehaviour; 
+    private float gravityValue;
 
     [Header("UI")]
     public Slider healthbar;
@@ -28,10 +29,12 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        gameBehaviour = GameObject.Find("GameBehaviour").GetComponent<GameBehaviour>();  
+        gravityValue = gameBehaviour.gravityValue;  
         movementSpeed = movementSpeedInit; // Initialise movement speed
         characterController = GetComponent<CharacterController>();   
         transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0f, 0f, 0f);
 
         currenthealth = maxhealth;
         healthbar.value = (float)(currenthealth / maxhealth);
