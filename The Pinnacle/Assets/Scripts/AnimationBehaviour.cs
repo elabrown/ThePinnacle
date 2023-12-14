@@ -16,7 +16,8 @@ public class AnimationStates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        bool isWalking = animator.GetBool(IsMovingHash); // Get the current value of the parameter "isWalking"
+        bool isWalking = animator
+        .GetBool(IsMovingHash); // Get the current value of the parameter "isWalking"
         if (Input.GetAxis("Vertical") != 0 && !isWalking)
         {
             animator.SetBool(IsMovingHash, true); // Set the value of the parameter "isWalking" to true

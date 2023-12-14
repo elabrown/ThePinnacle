@@ -6,11 +6,16 @@ TagManager:
   tags:
   - ObstructingObject
   - Key
+  - Playercharacter
+  - Enemy
+  - BossKey
+  - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Playercharacterlayer
   - Water
   - UI
   - 

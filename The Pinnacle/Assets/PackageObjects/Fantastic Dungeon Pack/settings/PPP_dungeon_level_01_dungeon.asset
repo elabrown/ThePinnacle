@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
     m_OverrideState: 1
     m_Value: 2
@@ -30,21 +30,21 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 1.69
+    m_Value: 3.44
   aperture:
     m_OverrideState: 1
-    m_Value: 22.9
+    m_Value: 3.6
   focalLength:
     m_OverrideState: 1
-    m_Value: 81
+    m_Value: 68.4
   bladeCount:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 5
   bladeCurvature:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   bladeRotation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -45
 --- !u!114 &-5095937946582078619
 MonoBehaviour:
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.446
+    m_Value: 0.406
   smoothness:
     m_OverrideState: 0
     m_Value: 0.2
@@ -132,12 +132,12 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6
   dirtTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: fe3ee8f1473582a4db06347a00304f49, type: 3}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
 --- !u!114 &8738120726305274781
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -153,10 +153,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.99639106, y: 0.93560046, z: 1, w: -0.015661703}
+    m_Value: {x: 1, y: 0.9315988, z: 0.9784634, w: -0.015661703}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.93388104, y: 0.92754453, z: 1, w: 0}
+    m_Value: {x: 0.93388104, y: 0.92754453, z: 1, w: -0.0066180304}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.89942116, z: 0.75398225, w: 0}
+    m_Value: {x: 1, y: 0.89942116, z: 0.75398225, w: 0.20774849}

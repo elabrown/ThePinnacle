@@ -1,46 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+public class FirstPersonCamera : MonoBehaviour
 {
-    public Transform target; // The target character to follow
-    public float distance = 5.0f; // Default distance from the target
-    public float height = 3.0f; // Height above the target
-    public float heightDamping = 2.0f;
-    public float rotationDamping = 3.0f;
-    public float zoomSensitivity = 10.0f; // Sensitivity of the zoom
-    public float minDistance = 2.0f; // Minimum zoom distance
-    public float maxDistance = 10.0f; // Maximum zoom distance
-    public float fixedXAngle = 45.0f; // Fixed X angle
+    public float mouseSensitivity = 100f;
+    public Transform playerBody;
 
-    private void LateUpdate()
+    private float xRotation = 0f;
+
+    void Update()
     {
-        if (!target) return;
+        // Check if right mouse button is held down
+        if (Input.GetMouseButtonDown(1)) // Right mouse button is pressed
+        {
+            Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        }
+        else if (Input.GetMouseButtonUp(1)) // Right mouse button is released
+        {
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor
+        }
 
-        // Calculate the current rotation angles
-        float wantedRotationAngle = target.eulerAngles.y;
-        float wantedHeight = target.position.y + height;
+        if (Input.GetMouseButton(1)) // Right mouse button is held down
+        {
+            // Get mouse input
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        float currentHeight = transform.position.y;
+            // Rotate the camera up and down, but clamp the rotation to avoid flipping
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // Dampen the height
-        currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+            // Apply the rotation to the camera
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        // Adjust the distance if the scroll wheel is used
-        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity, minDistance, maxDistance);
-
-        // Set the position of the camera on the x-z plane to:
-        // distance meters behind the target
-        Vector3 position = target.position - Quaternion.Euler(0, wantedRotationAngle, 0) * Vector3.forward * distance;
-
-        // Set the height of the camera
-        position = new Vector3(position.x, currentHeight, position.z);
-
-        // Apply the position
-        transform.position = position;
-
-        // Apply the rotation with a fixed X angle and Y angle following the target
-        transform.rotation = Quaternion.Euler(fixedXAngle, wantedRotationAngle, 0);
+            // Rotate the entire player body left and right
+            playerBody.Rotate(Vector3.up * mouseX);
+        }
+    }
+    public void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None; // Unlock the cursor
     }
 }
